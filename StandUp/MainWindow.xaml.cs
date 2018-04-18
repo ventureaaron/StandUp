@@ -19,6 +19,8 @@ namespace StandUp
     
     public partial class MainWindow : Window
     {
+        bool isRunning = false;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -51,10 +53,15 @@ namespace StandUp
 
         private void countDown(int minutes)
         {
-            System.Windows.Threading.DispatcherTimer dt = new System.Windows.Threading.DispatcherTimer();
-            dt.Tick += new EventHandler(dispatcherTimer_Tick);
-            dt.Interval = new TimeSpan(0, 0, 1);
-            dt.Start();
+            if (!isRunning)
+            {
+                isRunning = true;
+                System.Windows.Threading.DispatcherTimer dt = new System.Windows.Threading.DispatcherTimer();
+                dt.Tick += new EventHandler(dispatcherTimer_Tick);
+                dt.Interval = new TimeSpan(0, 0, 1);
+                dt.Start();
+            }
+            else minute_left.Content = minute_in.Text + ":00";
         }
 
         private void dispatcherTimer_Tick(object sender, EventArgs e)
@@ -90,6 +97,14 @@ namespace StandUp
             int minutes;
             int.TryParse(minute_in.Text, out minutes);
             countDown(minutes);
+        }
+
+        private void OnKeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.Key == Key.Enter && start_button.IsEnabled)
+            {
+                start_button_Click(sender, e);
+            }
         }
     }
 }

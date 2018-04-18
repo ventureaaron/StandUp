@@ -8,7 +8,7 @@
         Title="StandUp!" Height="188" Width="174" ResizeMode="CanMinimize">
     <Grid Margin="0,0,0,-20">
         <Label Content="Interval in minutes:" HorizontalAlignment="Left" Margin="22,10,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="minute_in" HorizontalAlignment="Left" Height="23" Margin="22,36,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="minute_in_TextChanged"/>
+        <TextBox x:Name="minute_in" HorizontalAlignment="Left" Height="23" Margin="22,36,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="minute_in_TextChanged" KeyDown="OnKeyDown"/>
         <Button x:Name="start_button" Content="Start" HorizontalAlignment="Left" Margin="22,64,0,0" VerticalAlignment="Top" Width="60" Height="22" IsEnabled="False" Click="start_button_Click"/>
         <Label Content="Left in this interval:" HorizontalAlignment="Left" Margin="22,91,0,0" VerticalAlignment="Top" Width="120"/>
         <Label x:Name="minute_left" Content="0" HorizontalAlignment="Left" Margin="22,122,0,0" VerticalAlignment="Top"/>
